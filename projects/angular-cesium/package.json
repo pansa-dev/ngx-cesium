@@ -1,6 +1,6 @@
 {
   "name": "@pansa/ngx-cesium",
-  "version": "15.0.0",
+  "version": "15.0.1",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/pansa-dev/angular-cesium",
@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "@auscope/angular2parse": "^2.0.4",
-    "geodesy": "^1.1.1",
     "@types/geodesy": "^1.1.2",
+    "geodesy": "^1.1.1",
     "json-string-mapper": "^1.0.0",
     "primitive-primitives": "0.0.6",
     "tslib": "^2.0.0"
@@ -28,9 +28,12 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
-    "copy:files": "cp -a ./schematics/ng-add ../../dist/angular-cesium/schematics",
-    "copy:collection": "cp ./schematics/collection.json ../../dist/angular-cesium/schematics/collection.json",
+    "copy:files": "shx cp -R ./schematics/ng-add ../../dist/angular-cesium/schematics",
+    "copy:collection": "shx cp ./schematics/collection.json ../../dist/angular-cesium/schematics/collection.json",
     "postbuild": "npm run copy:files && npm run copy:collection"
   },
-  "schematics": "./schematics/collection.json"
+  "schematics": "./schematics/collection.json",
+  "devDependencies": {
+    "shx": "^0.3.4"
+  }
 }

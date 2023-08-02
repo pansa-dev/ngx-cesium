@@ -1,4 +1,5 @@
 export * from './services/map-events-mananger/map-events-manager';
+export * from './services/map-events-mananger/cesium-event-builder';
 export * from './services/map-events-mananger/disposable-observable';
 export * from './services/map-events-mananger/event-registration-input';
 export * from './services/map-events-mananger/consts/cesium-event-modifier.enum';
