@@ -1,5 +1,5 @@
 {
-  "name": "@pansa-dev/ngx-cesium",
+  "name": "@pansa/ngx-cesium",
   "version": "15.0.0",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
@@ -27,7 +27,7 @@
     "heatmap.js": "^2.0.5"
   },
   "scripts": {
-    "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
+    "build": "tsc -p tsconfig.schematics.json",
     "copy:files": "cp -a ./schematics/ng-add ../../dist/angular-cesium/schematics",
     "copy:collection": "cp ./schematics/collection.json ../../dist/angular-cesium/schematics/collection.json",
     "postbuild": "npm run copy:files && npm run copy:collection"
