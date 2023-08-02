@@ -1,7 +1,7 @@
 import { Injectable, NgZone, Optional } from '@angular/core';
-import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
 import { ViewerConfiguration } from '../viewer-configuration/viewer-configuration.service';
-import { AcMapComponent } from '../../components/ac-map/ac-map.component';
+import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
+// import { AcMapComponent } from '../../components/ac-map/ac-map.component';
 
 /**
  *  Service that initialize cesium viewer and expose cesium viewer and scene.
@@ -9,12 +9,13 @@ import { AcMapComponent } from '../../components/ac-map/ac-map.component';
 @Injectable()
 export class CesiumService {
   private cesiumViewer: any;
-  private map: AcMapComponent;
+  // FIXME private map: AcMapComponent;
+  private map: any;
 
   constructor(private ngZone: NgZone, private viewerFactory: ViewerFactory, @Optional() private viewerConfiguration: ViewerConfiguration) {
   }
 
-  init(mapContainer: HTMLElement, map: AcMapComponent) {
+  init(mapContainer: HTMLElement, map: any) {
     this.map = map;
     this.ngZone.runOutsideAngular(() => {
       const options = this.viewerConfiguration ? this.viewerConfiguration.getNextViewerOptions() : undefined;
@@ -51,7 +52,7 @@ export class CesiumService {
     return this.cesiumViewer.canvas as HTMLCanvasElement;
   }
 
-  getMap(): AcMapComponent {
+  getMap(): any {
     return this.map;
   }
 }
