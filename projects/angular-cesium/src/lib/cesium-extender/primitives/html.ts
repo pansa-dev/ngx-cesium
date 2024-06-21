@@ -12,6 +12,7 @@ export class HtmlPrimitive {
   private _element: HTMLElement;
   private _collection: HtmlCollection;
   private _mapContainer;
+  private _preparedUpdateScreenPosition;
 
   constructor(options: any, collection: HtmlCollection = null) {
     if (typeof options !== 'object') {
@@ -85,7 +86,7 @@ export class HtmlPrimitive {
     return this._collection;
   }
 
-  update() {
+  prepareUpdate() {
     if (!Cesium.defined(this._show) || !Cesium.defined(this._element)) {
       return;
     }
@@ -103,9 +104,18 @@ export class HtmlPrimitive {
       return;
     }
 
-    this._element.style.top = `${screenPosition.y}px`;
-    this._element.style.left = `${screenPosition.x}px`;
-    this._lastPosition = screenPosition;
+    this._preparedUpdateScreenPosition = screenPosition;
+  }
+
+  update() {
+    if (!this._preparedUpdateScreenPosition) {
+      this.prepareUpdate();
+    }
+
+    this._element.style.top = `${this._preparedUpdateScreenPosition.y}px`;
+    this._element.style.left = `${this._preparedUpdateScreenPosition.x}px`;
+    this._lastPosition = this._preparedUpdateScreenPosition;
+    this._preparedUpdateScreenPosition = undefined;
   }
 
   remove() {
