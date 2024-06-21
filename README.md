@@ -21,14 +21,14 @@ Check out our [Docs](https://docs.angular-cesium.com) and our blog post [Intro t
 + The demo contains many examples, check out the `demo-map.component.ts` file.
 + Run: 
     ```
-    $ git clone https://github.com/articodeltd/angular-cesium.git
+    $ git clone https://github.com/pansa-dev/ngx-cesium.git
     $ cd angular-cesium
     $ yarn
     $ yarn demo:start
     $ open http://localhost:4200
     ```
 + More demos:
-  + [Angular Cesium Demo](https://github.com/articodeltd/angular-cesium-demo)
+  + [Angular Cesium Demo](https://github.com/pansa-dev/angular-cesium-demo)
   + [GeoStrike](http://geo-strike.com) - [Repository](https://github.com/Webiks/GeoStrike)
   + [GLO](https://glo.now.sh) - [Repository](https://github.com/sofwerx/glo-demo)
   + [Safehouse](https://github.com/sofwerx/safehouse)

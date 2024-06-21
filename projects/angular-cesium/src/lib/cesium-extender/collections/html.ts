@@ -31,6 +31,9 @@ export class HtmlCollection {
 
   update() {
     for (let i = 0, len = this._collection.length; i < len; i++) {
+      this._collection[i].prepareUpdate(); // NOTE: this prepares the update to prevent forced reflow when reading canvas clientWidth and clientHeight
+    }
+    for (let i = 0, len = this._collection.length; i < len; i++) {
       this._collection[i].update();
     }
   }

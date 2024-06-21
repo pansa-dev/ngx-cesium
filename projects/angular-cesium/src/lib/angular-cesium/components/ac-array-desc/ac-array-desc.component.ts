@@ -14,10 +14,27 @@ import {
 import { AcNotification } from '../../models/ac-notification';
 import { Subject, Subscription } from 'rxjs';
 import { IDescription } from '../../models/description';
-import * as _get from 'lodash.get';
 import { AcLayerComponent } from '../ac-layer/ac-layer.component';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
+
+type AnyObject = { [key: string]: any };
+
+function _get(object: AnyObject, path: string | string[], defaultValue?: any): any {
+  const paths = Array.isArray(path) ? path : path.split('.');
+  let result = object;
+
+  for (let p of paths) {
+    result = result[p];
+
+    if (result === undefined) {
+      return defaultValue;
+    }
+  }
+
+  return result;
+}
+
 
 /**
  *  This is component represents an array under `ac-layer`.
@@ -65,9 +82,9 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
   @Input() idGetter: (item: any, index: number) => string;
 
   @Input() show = true;
-  @ViewChild('layer', {static: true}) private layer: AcLayerComponent;
-  @ContentChildren(BasicDesc, {descendants: false}) private basicDescs: any;
-  @ContentChildren(AcArrayDescComponent, {descendants: false}) private arrayDescs: any;
+  @ViewChild('layer', { static: true }) private layer: AcLayerComponent;
+  @ContentChildren(BasicDesc, { descendants: false }) private basicDescs: any;
+  @ContentChildren(AcArrayDescComponent, { descendants: false }) private arrayDescs: any;
   private entitiesMap = new Map<string, string[]>();
   private layerServiceSubscription: Subscription;
   private id = 0;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { JsonMapper } from '../json-mapper/json-mapper.service';
-import { Parse } from 'angular2parse';
+import { Parse } from '@auscope/angular2parse';
 import { SmartAssigner } from '../smart-assigner/smart-assigner.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 
@@ -10,7 +10,7 @@ export class CesiumProperties {
   private _evaluatorsCache = new Map<string, (cache: ComputationCache, context: Object) => Object>();
 
   constructor(private _parser: Parse,
-              private _jsonMapper: JsonMapper) {
+    private _jsonMapper: JsonMapper) {
   }
 
   _compile(expression: string, withCache = true): (cache: ComputationCache, context: Object) => Object {
