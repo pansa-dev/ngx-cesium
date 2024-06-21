@@ -1,6 +1,6 @@
 {
   "name": "@pansa/ngx-cesium",
-  "version": "15.0.2",
+  "version": "15.0.3",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/pansa-dev/ngx-cesium",

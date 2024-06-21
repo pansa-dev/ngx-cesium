@@ -100,16 +100,16 @@ export class HtmlPrimitive {
       screenPosition.x += this._pixelOffset.x;
     }
 
-    if (this._lastPosition && this._lastPosition.equals(screenPosition)) {
-      return;
-    }
-
     this._preparedUpdateScreenPosition = screenPosition;
   }
 
   update() {
     if (!this._preparedUpdateScreenPosition) {
       this.prepareUpdate();
+    }
+
+    if (this._lastPosition && this._lastPosition.equals(this._preparedUpdateScreenPosition)) {
+      return;
     }
 
     this._element.style.top = `${this._preparedUpdateScreenPosition.y}px`;
